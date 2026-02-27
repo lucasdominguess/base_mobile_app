@@ -72,6 +72,13 @@
       0 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     ),
   ),
+  'nativephp/mobile' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Native\\Mobile\\NativeServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
