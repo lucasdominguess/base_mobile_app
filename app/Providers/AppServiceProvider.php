@@ -13,6 +13,7 @@ use App\Services\GoogleAuthService;
 use App\Services\LdapService;
 use App\Services\XssCleanService;
 use App\Users\User;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (config('app.env') !== 'testing') {
+            Artisan::call('migrate', ['--force' => true]);
+        }
+
         Route::pattern('id', '[0-9]+');
         // Gate para verificar se o usuário é um Administrador
         Gate::define('Is-admin', function ($user) {
