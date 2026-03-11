@@ -4,12 +4,12 @@ namespace Database\Factories\Users;
 
 use App\Enums\UserRoles;
 use App\Enums\UserStatus;
-use App\Users\User;
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Users\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Users\User>
  */
 class UserFactory extends Factory
 {
