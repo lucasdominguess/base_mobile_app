@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 
+use App\Console\Commands\CleanAll;
 use App\Enums\UserRoles;
 use App\Interfaces\LdapInterface;
 use App\Interfaces\PdfExporterInterface;
@@ -25,9 +26,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+             if ($this->app->runningInConsole()) {
+            $this->commands([
+                CleanAll::class,
+            ]);
+        }
+
         $this->app->bind(SanitizerInterface::class, XssCleanService::class);
         $this->app->bind(LdapInterface::class, LdapService::class);
         $this->app->bind(PdfExporterInterface::class, DomPdfService::class);
+
+
         // $this->app->bind(SocialAuthInterface::class, GoogleAuthService::class);
         // $this->app->register(L5SwaggerServiceProvider::class);
     }
